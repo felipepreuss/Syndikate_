@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bguma1vavjjhx"]
+[gd_scene load_steps=2 format=3 uid="uid://bguma1vavjjhx"]
+
+[ext_resource type="Script" path="res://mainmenu.gd" id="1_rvcbe"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,6 +13,7 @@ offset_right = -5.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rvcbe")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -23,12 +26,16 @@ alignment = 1
 
 [node name="new" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "NEw"
+text = "New 
+Game"
 
-[node name="new2" type="Button" parent="HBoxContainer"]
+[node name="something_soon" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "NEw"
+text = "TEXT"
 
-[node name="new3" type="Button" parent="HBoxContainer"]
+[node name="quit" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="HBoxContainer/new" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="HBoxContainer/quit" to="." method="_on_quit_pressed"]
