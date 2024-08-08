@@ -25,7 +25,7 @@ func _ready():
 	atk_dmg.body_entered.connect(on_attack_damage_body_entered)
 	atk_range.body_entered.connect(on_attack_range_body_entered)
 	atk_range.body_exited.connect(on_attack_range_body_exited) # Replace with function body.
-
+	 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -43,7 +43,17 @@ func walk_state(delta):
 func attack_state(delta):
 	pass
 func hurting_state(delta):
-	pass
+	move(0)
+func move(speed = 0, can_fall = true, delta = 0):
+	if !is_on_floor() and velocity.y > 0 and can_fall:
+		velocity.y += gravity * delta
+	if dir: 
+		if dir ==1:
+			$AnimatedSprite2D.flip_h = false
+		else:
+			$AnimatedSprite2D.flip_h = true
+		velocity.x = speed * dir
+	move_and_slide()
 func on_attack_damage_body_entered():
 	pass
 	
