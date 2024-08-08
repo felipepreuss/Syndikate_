@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://c86qxbrf24d5p"]
+
+[ext_resource type="Script" path="res://unit.gd" id="1_c4eem"]
+[ext_resource type="Texture2D" uid="uid://kmy3ej1a6qqq" path="res://icon.svg" id="1_yqvr0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qrxar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yqvr0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhelj"]
+size = Vector2(127, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j68ro"]
+size = Vector2(30.5, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0me8d"]
+size = Vector2(30, 123)
+
+[node name="base" type="CharacterBody2D"]
+script = ExtResource("1_c4eem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qrxar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_uhelj")
+
+[node name="Attack_damage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_damage"]
+position = Vector2(59.75, -0.5)
+shape = SubResource("RectangleShape2D_j68ro")
+debug_color = Color(0.792157, 0.117647, 0.701961, 0.419608)
+
+[node name="Attack_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
+position = Vector2(76, 0.5)
+shape = SubResource("RectangleShape2D_0me8d")
+debug_color = Color(1, 1, 0, 0.419608)
