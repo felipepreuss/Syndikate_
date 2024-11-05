@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdcqfoqb7a5uc"]
+
+[ext_resource type="Script" path="res://Scripts/white_unit.gd" id="1_7o65o"]
+[ext_resource type="Texture2D" uid="uid://kmy3ej1a6qqq" path="res://icon.svg" id="2_56t1i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1l25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_56t1i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iof4t"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee07l"]
+size = Vector2(30.5, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quwq4"]
+size = Vector2(30, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4lei"]
+size = Vector2(132, 131)
+
+[node name="white_unit" type="CharacterBody2D" groups=["white_units"]]
+script = ExtResource("1_7o65o")
+health = 35
+damage = 12
+enemy = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c1l25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iof4t")
+
+[node name="Attack_damage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_damage"]
+position = Vector2(-60, -0.5)
+shape = SubResource("RectangleShape2D_ee07l")
+debug_color = Color(0.792157, 0.117647, 0.701961, 0.419608)
+
+[node name="Attack_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
+position = Vector2(-75, -0.5)
+shape = SubResource("RectangleShape2D_quwq4")
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="hitbox" type="Area2D" parent="." groups=["white_units"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_o4lei")
+debug_color = Color(0.272103, 0.622392, 0.330021, 0.42)
+
+[node name="hp_label" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -95.0
+offset_right = 40.0
+offset_bottom = -72.0

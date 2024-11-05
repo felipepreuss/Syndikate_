@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://gna1xrxh4l4w"]
+
+[ext_resource type="PackedScene" uid="uid://bdcqfoqb7a5uc" path="res://Scenes/white_unit.tscn" id="1_lvb1u"]
+[ext_resource type="Texture2D" uid="uid://kmy3ej1a6qqq" path="res://icon.svg" id="3_3nwuo"]
+[ext_resource type="PackedScene" uid="uid://b80ebpvyjmhdy" path="res://Scenes/rifle_unit.tscn" id="3_njl4b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdrmk"]
+size = Vector2(1312, 129)
+
+[node name="main" type="Node2D"]
+
+[node name="white_unit" parent="." instance=ExtResource("1_lvb1u")]
+position = Vector2(1000, 455)
+
+[node name="rifle_unit" parent="." instance=ExtResource("3_njl4b")]
+position = Vector2(105, 449)
+health = 50
+damage = 25
+price = 50
+enemy = false
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(622.903, 591.083)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(0.0969238, -0.582886)
+shape = SubResource("RectangleShape2D_hdrmk")
+
+[node name="Sprite2D" type="Sprite2D" parent="floor"]
+position = Vector2(0.0969238, -0.0828857)
+scale = Vector2(10.25, 1)
+texture = ExtResource("3_3nwuo")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(571, 253)
+zoom = Vector2(0.7, 0.7)

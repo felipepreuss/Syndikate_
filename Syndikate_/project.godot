@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Syndikate_game"
-run/main_scene="res://mainmenu.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+run/main_scene="res://Scenes/mainmenu.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[global_group]
+
+red_units=""
+white_units=""
 
 [rendering]
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhmxnxytvqd68"]
+
+[ext_resource type="PackedScene" uid="uid://bdcqfoqb7a5uc" path="res://Scenes/white_unit.tscn" id="1_crgdb"]
+[ext_resource type="PackedScene" uid="uid://bie8w7h3tei7o" path="res://Scenes/red_unit.tscn" id="2_2l5kg"]
+[ext_resource type="Texture2D" uid="uid://kmy3ej1a6qqq" path="res://icon.svg" id="3_dpkhm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdrmk"]
+size = Vector2(1312, 129)
+
+[node name="main" type="Node2D"]
+
+[node name="white_unit" parent="." instance=ExtResource("1_crgdb")]
+position = Vector2(1000, 460)
+
+[node name="red_unit" parent="." instance=ExtResource("2_2l5kg")]
+position = Vector2(180, 460)
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(622.903, 591.083)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(0.0969238, -0.582886)
+shape = SubResource("RectangleShape2D_hdrmk")
+
+[node name="Sprite2D" type="Sprite2D" parent="floor"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0.0969238, -0.0828857)
+scale = Vector2(10.25, 1)
+texture = ExtResource("3_dpkhm")

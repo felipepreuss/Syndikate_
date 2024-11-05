@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://bie8w7h3tei7o"]
+
+[ext_resource type="Script" path="res://Scripts/red_unit.gd" id="1_1nlsl"]
+[ext_resource type="Texture2D" uid="uid://kmy3ej1a6qqq" path="res://icon.svg" id="2_jdlvk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1vsn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jdlvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jdlvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jdlvk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfgoj"]
+size = Vector2(127, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cirta"]
+size = Vector2(30.5, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmvyh"]
+size = Vector2(30, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2u6i"]
+size = Vector2(132, 131)
+
+[node name="red_unit" type="CharacterBody2D" groups=["red_units"]]
+modulate = Color(1, 0, 0, 1)
+script = ExtResource("1_1nlsl")
+health = 35
+damage = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t1vsn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_dfgoj")
+
+[node name="Attack_damage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_damage"]
+position = Vector2(60, -0.5)
+shape = SubResource("RectangleShape2D_cirta")
+debug_color = Color(0.792157, 0.117647, 0.701961, 0.419608)
+
+[node name="Attack_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
+position = Vector2(75, 0.5)
+shape = SubResource("RectangleShape2D_bmvyh")
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_f2u6i")
+debug_color = Color(0.272103, 0.622392, 0.330021, 0.42)
+
+[node name="hp_label" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -95.0
+offset_right = 40.0
+offset_bottom = -72.0
+metadata/_edit_use_anchors_ = true

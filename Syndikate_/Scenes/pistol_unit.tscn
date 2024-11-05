@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6xay1cxe8tt5"]
+
+[ext_resource type="Script" path="res://Scripts/pistol_unit.gd" id="1_t8enp"]
+[ext_resource type="Texture2D" uid="uid://kmy3ej1a6qqq" path="res://icon.svg" id="2_tgvfl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1vsn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tgvfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tgvfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tgvfl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alj7n"]
+size = Vector2(129, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7btvd"]
+size = Vector2(273, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfniu"]
+size = Vector2(129, 127)
+
+[node name="pistol_unit" type="CharacterBody2D" groups=["red_units"]]
+modulate = Color(1, 0, 0, 1)
+script = ExtResource("1_t8enp")
+health = 25
+damage = 40
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.541176, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_t1vsn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_alj7n")
+
+[node name="Attack_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
+position = Vector2(176.5, 0)
+shape = SubResource("RectangleShape2D_7btvd")
+
+[node name="hitbox" type="Area2D" parent="." groups=["red_units"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_sfniu")
+
+[node name="hp_label" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -95.0
+offset_right = 40.0
+offset_bottom = -72.0
+metadata/_edit_use_anchors_ = true
+
+[node name="bullet_marker" type="Marker2D" parent="."]
+position = Vector2(115.035, -1.23038)

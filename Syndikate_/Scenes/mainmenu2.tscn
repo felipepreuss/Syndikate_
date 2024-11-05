@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce6wk57w0h0h3"]
+
+[ext_resource type="Texture2D" uid="uid://bia0rru8w88g6" path="res://Assets/Fundo do menu principal.png" id="1_vhwne"]
+[ext_resource type="Texture2D" uid="uid://cdsm0nqlhe0rv" path="res://Assets/Titulo.png" id="2_t56b2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h1xl"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_6h1xl")
+
+[node name="FundoDoMenuPrincipal" type="Sprite2D" parent="Control"]
+position = Vector2(576, 325.75)
+scale = Vector2(3.04485, 3.35309)
+texture = ExtResource("1_vhwne")
+
+[node name="Titulo" type="Sprite2D" parent="Control"]
+position = Vector2(577, 291)
+scale = Vector2(3, 3)
+texture = ExtResource("2_t56b2")

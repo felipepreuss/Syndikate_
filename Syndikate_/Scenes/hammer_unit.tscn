@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg7wdmx8wongo"]
+
+[ext_resource type="Script" path="res://Scripts/hammer_unit.gd" id="1_myxja"]
+[ext_resource type="Texture2D" uid="uid://kmy3ej1a6qqq" path="res://icon.svg" id="1_nbevq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yi7a8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nbevq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjocy"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iixm0"]
+size = Vector2(31.5, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6tlf"]
+size = Vector2(25, 118.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it8ii"]
+size = Vector2(128, 128)
+
+[node name="hammer_unit" type="CharacterBody2D" groups=["red_units"]]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("1_myxja")
+health = 75
+damage = 35
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yi7a8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gjocy")
+
+[node name="Attack_damage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_damage"]
+position = Vector2(56, 0.5)
+shape = SubResource("RectangleShape2D_iixm0")
+debug_color = Color(0.792157, 0.117647, 0.701961, 0.419608)
+
+[node name="Attack_range" type="Area2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_range"]
+position = Vector2(61.5, 1)
+shape = SubResource("RectangleShape2D_p6tlf")
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_it8ii")
+debug_color = Color(0.272103, 0.622392, 0.330021, 0.42)
+
+[node name="hp_label" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -95.0
+offset_right = 40.0
+offset_bottom = -72.0
